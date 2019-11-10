@@ -1,0 +1,22 @@
+.container {
+    min-width: 500px;
+    min-height: 550px;
+    max-height: 550px;
+    overflow: auto;
+    /* background-color: red; */
+    /* border-left: 3px solid black; */
+}
+
+mat-card {
+    border: 1px solid black;
+}
+
+td {
+    text-align: right;
+    min-width: 180px;
+}
+
+mat-card-actions {
+    float: right;
+    margin-top: -34px;
+}

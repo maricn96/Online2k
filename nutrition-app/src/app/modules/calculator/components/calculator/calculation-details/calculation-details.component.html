@@ -1,0 +1,9 @@
+<h1 mat-dialog-title>Your meals for selected date:</h1>
+<div mat-dialog-content>
+  <div *ngFor="let meal of meals">
+    <p><strong>{{ meal.food }}</strong> &nbsp;-&nbsp;{{ meal.amount }} grams</p>
+  </div>
+</div>
+<div mat-dialog-actions>
+  <button mat-raised-button color="primary" (click)="onNoClick()">Ok</button>
+</div>

@@ -1,0 +1,14 @@
+.root {
+    margin-left: 200px;
+    margin-top: 50px;
+}
+
+#savebtn {
+    margin-left: 110px;
+}
+
+#calculations {
+    float: right;
+    margin-top: -600px;
+    margin-right: 200px;
+}

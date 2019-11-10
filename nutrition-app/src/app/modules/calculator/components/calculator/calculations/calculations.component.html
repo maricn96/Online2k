@@ -1,0 +1,34 @@
+<div class="container">
+  <div *ngFor="let calculation of allCalculationsByUser">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>{{ calculation.dateOfCalculation | date }}</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <table>
+          <tr>
+            <td>
+              <p>Calories: {{ calculation.calories }}</p>
+            </td>
+            <td>
+              <p>Proteins: {{ calculation.proteins }}</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>Carbs: {{ calculation.carbs }}</p>
+            </td>
+            <td>
+              <p>Fat: {{ calculation.fat }}</p>
+            </td>
+          </tr>
+        </table>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button (click)="openDialog(calculation.calculation)" color="primary">DETAILS</button>
+        <button mat-raised-button (click)="deleteCalculation(calculation.calculation)" color="warn">DELETE</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+
+</div>

@@ -1,0 +1,93 @@
+<div class="root">
+  <form (submit)="calculate($event)">
+    <table>
+      <tr>
+        <td>
+
+        </td>
+        <td>
+        <mat-form-field class="example-full-width">
+          <input type="text" id="name" placeholder="Choose food" aria-label="Number" matInput [formControl]="myControl"
+            [matAutocomplete]="auto">
+          <mat-autocomplete #auto="matAutocomplete">
+            <mat-option *ngFor="let name of filteredFoodNames | async" [value]="name">
+              {{ name }}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+        </td>
+      </tr>
+      <tr>
+        <td>
+        </td>
+        <td>
+        <mat-form-field>
+          <input matInput placeholder="Insert amount [gr]" id="amount">
+        </mat-form-field>
+        </td>
+      </tr>
+      <tr>
+        <td>
+        </td>
+        <td>
+            <button type="submit" mat-raised-button color="primary" hidden="true">Submit</button>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Calories
+        </td>
+        <td>
+        <mat-form-field appearance="outline">
+          <input matInput disabled placeholder="Calories" [value]="calories">
+        </mat-form-field>
+      </td>
+      </tr>
+      <tr>
+        <td>
+          Proteins
+        </td>
+        <td>
+        <mat-form-field appearance="outline">
+          <input matInput disabled [value]="proteins">
+        </mat-form-field>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Carbohydrates
+        </td>
+        <td>
+        <mat-form-field appearance="outline">
+          <input matInput disabled [value]="carbs">
+        </mat-form-field>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Fat
+        </td>
+        <td>
+        <mat-form-field appearance="outline">
+          <input matInput disabled [value]="fat">
+        </mat-form-field>
+        </td>
+      </tr>
+    </table>
+  </form>
+  <tr>
+    <td>
+      <!-- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      &nbsp; -->
+    </td>
+    <td >
+        <button id="savebtn" (click)="calculateFinal()" mat-raised-button color="primary">Save</button>
+    </td>
+  </tr>
+  
+</div>
+<div id="calculations">
+    <h3>Calculations history</h3>
+    <app-calculations></app-calculations>
+</div>
