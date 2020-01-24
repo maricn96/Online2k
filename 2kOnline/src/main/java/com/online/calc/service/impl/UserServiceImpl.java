@@ -8,6 +8,7 @@ import java.util.Optional;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.bson.types.ObjectId;
+import org.springframework.stereotype.Service;
 
 import com.online.calc.dto.UserDTO;
 import com.online.calc.dto.UserDTO;
@@ -17,6 +18,7 @@ import com.online.calc.repository.FoodRepository;
 import com.online.calc.repository.UserRepository;
 import com.online.calc.service.UserService;
 
+@Service
 public class UserServiceImpl implements UserService {
 
 private static final Logger log = LogManager.getLogger(FoodServiceImpl.class);

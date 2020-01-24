@@ -25,7 +25,7 @@ public class CalculationCronJob {
 	/*
 	 * Treba da se aktivira na svakih 7 dana (brise kalkulacije starije od 7 dana, jedan od nacina da
 	 * se baza malo rastereti)
-	 * RADI, ali exp nije testiran
+	 * RADI, ali nije dobar pattern u cron-u
 	 */
 	@Scheduled(cron = "0 0 12 */7 * ?")
 	public void deleteOutdatedCalculations() {
