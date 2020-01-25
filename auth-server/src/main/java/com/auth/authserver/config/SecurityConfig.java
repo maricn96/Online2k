@@ -33,15 +33,24 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.requestMatchers()
-			.antMatchers("/login", "/oauth/authorize")
-			.and()
-			.authorizeRequests()
+		//dozvoljeno bilo sta, bez sekjuritija
+		http.authorizeRequests()
+			.antMatchers("/**")
+			.permitAll()
 			.anyRequest()
-			.authenticated()
+			.anonymous()
 			.and()
-			.formLogin()
-			.permitAll();
+			.csrf()
+			.disable();
+//		http.requestMatchers()
+//			.antMatchers("/login", "/register", "/user", "/oauth/authorize")
+//			.and()
+//			.authorizeRequests()
+//			.anyRequest()
+//			.authenticated()
+//			.and()
+//			.formLogin()
+//			.permitAll();
 	}
 	
 	

@@ -1,0 +1,23 @@
+<div class="root">
+    <h1>
+        Login
+    </h1>
+    <form (submit)="login($event)">
+        <table>
+          <tr>
+            <mat-form-field appearance="outline">
+              <mat-label>Username</mat-label>
+              <input matInput placeholder="Insert username" id="username" />
+            </mat-form-field>
+          </tr>
+          <tr>
+            <mat-form-field appearance="outline">
+              <mat-label>Password</mat-label>
+              <input type="password" matInput placeholder="Insert password" id="password" />
+            </mat-form-field>
+          </tr>
+        </table>
+        <button type="submit" mat-raised-button color="primary">Login</button>
+      </form>
+</div>
+

@@ -1,0 +1,41 @@
+<div class="root">
+    <h1>
+      Register for free
+    </h1>
+    <form (submit)="register($event)">
+      <table>
+        <!-- <tr>
+          <mat-form-field appearance="outline">
+            <mat-label>First Name</mat-label>
+            <input matInput placeholder="Insert first name" id="firstname" />
+          </mat-form-field>
+        </tr>
+        <tr>
+          <mat-form-field appearance="outline">
+            <mat-label>Last Name</mat-label>
+            <input matInput placeholder="Insert last name" id="lastname" />
+          </mat-form-field>
+        </tr> -->
+        <tr>
+          <mat-form-field appearance="outline">
+            <mat-label>E-mail</mat-label>
+            <input type="email" matInput placeholder="Insert email address" id="email" />
+          </mat-form-field>
+        </tr>
+        <tr>
+          <mat-form-field appearance="outline">
+            <mat-label>Password</mat-label>
+            <input type="password" matInput placeholder="Insert password" id="password" />
+          </mat-form-field>
+        </tr>
+        <tr>
+          <mat-form-field appearance="outline">
+            <mat-label>Repeat password</mat-label>
+            <input type="password" matInput placeholder="Insert repeat password" id="passwordRepeated" />
+          </mat-form-field>
+        </tr>
+      </table>
+      <button type="submit" mat-raised-button color="primary">Register</button>
+    </form>
+    <button (click)="klik()">dugme</button>
+  </div>

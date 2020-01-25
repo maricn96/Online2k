@@ -1,18 +1,22 @@
-<form (submit)="addNewFood($event)" class="root">
-  <table>
-    <tr>
-      <mat-form-field appearance="outline">
-        <mat-label>Name</mat-label>
-        <input matInput placeholder="Insert name" id="name" />
-      </mat-form-field>
-    </tr>
-    <tr>
-      <mat-form-field appearance="outline">
-        <mat-label>Calories</mat-label>
-        <input matInput placeholder="Insert calories" id="calories" />
-      </mat-form-field>
-    </tr>
-    <tr>
+<div class="root">
+  <h1>
+    Insert new drink or food
+  </h1>
+  <form (submit)="addNewFood($event)">
+    <table>
+      <tr>
+        <mat-form-field appearance="outline">
+          <mat-label>Name</mat-label>
+          <input matInput placeholder="Insert name" id="name" />
+        </mat-form-field>
+      </tr>
+      <tr>
+        <mat-form-field appearance="outline">
+          <mat-label>Calories</mat-label>
+          <input matInput placeholder="Insert calories" id="calories" />
+        </mat-form-field>
+      </tr>
+      <tr>
         <mat-form-field appearance="outline">
           <mat-label>Proteins</mat-label>
           <input matInput placeholder="Insert proteins" id="proteins" />
@@ -30,6 +34,7 @@
           <input matInput placeholder="Insert fat" id="fat" />
         </mat-form-field>
       </tr>
-  </table>
-  <button type="submit" mat-raised-button color="primary">Create</button>
-</form>
+    </table>
+    <button type="submit" mat-raised-button color="primary">Create</button>
+  </form>
+</div>
