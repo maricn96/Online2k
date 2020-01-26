@@ -9,113 +9,92 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
+
+import com.auth.authserver.jwt.JwtTokenFilterConfigurer;
+import com.auth.authserver.jwt.JwtTokenUtils;
 
 @Configuration
 //@EnableWebSecurity
 //@EnableGlobalMethodSecurity(prePostEnabled = true)
-@Order(1)
-public class SecurityConfig extends WebSecurityConfigurerAdapter {
-	
-	/*
-	 * Ista prica, ovo je sa okta core sajta, ono ispod nesto od ranije
-	 * Dakle ova klasa autentifikuje zahteve ka serveru. 
-	 */
-	
-	@Value("${user.oauth.user.username}")
-	private String username;
-	
-	@Value("${user.oauth.user.password}")
-	private String password;
-	
-	@Override
-	protected void configure(HttpSecurity http) throws Exception {
-		//dozvoljeno bilo sta, bez sekjuritija
-		http.authorizeRequests()
-			.antMatchers("/**")
-			.permitAll()
-			.anyRequest()
-			.anonymous()
-			.and()
-			.csrf()
-			.disable();
-//		http.requestMatchers()
-//			.antMatchers("/login", "/register", "/user", "/oauth/authorize")
-//			.and()
-//			.authorizeRequests()
-//			.anyRequest()
-//			.authenticated()
-//			.and()
-//			.formLogin()
-//			.permitAll();
-	}
-	
-	
-	@Override
-	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-		auth.inMemoryAuthentication()
-			.withUser(username)
-			.password(passwordEncoder().encode(password))
-			.roles("USER");
-	}
-	
-	@Bean
-	public BCryptPasswordEncoder passwordEncoder() {
-		return new BCryptPasswordEncoder();
-	}
-	
-	
-	
-	
-	/*
-	 * Nesto od ranije, nebitno ako ovo iznad radi..
-	 */
+public class SecurityConfig// extends WebSecurityConfigurerAdapter
+{
 	
 
-//	private UserDetailsService myUserDetailsService;
+//	@Autowired
+//	private JwtTokenUtils jwtTokenProvider;
+//	
+//	@Autowired
+//	private UserDetailsService userDetailsService;
+//	
 //
-//	public SecurityConfig(UserDetailsService myUserDetailsService) {
-//		this.myUserDetailsService = myUserDetailsService;
+//	public void configureAuthentication(AuthenticationManagerBuilder authenticationManagerBuilder) throws Exception {
+//		authenticationManagerBuilder.userDetailsService(this.userDetailsService).passwordEncoder(passwordEncoder());
 //	}
-//
-//	@Override
+//	
 //	@Bean
+//	@Override
 //	public AuthenticationManager authenticationManagerBean() throws Exception {
 //		return super.authenticationManagerBean();
 //	}
-//
-//	@Override
-//	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-//		auth.userDetailsService(this.myUserDetailsService).passwordEncoder(encoder());
-//	}
-//
-//	@Autowired
-//	public void globalUserDetails(AuthenticationManagerBuilder auth) throws Exception {
-//		auth.userDetailsService(myUserDetailsService).passwordEncoder(encoder());
-//	}
-//
+//	
 //	@Override
 //	protected void configure(HttpSecurity http) throws Exception {
-//		http.csrf()
-//			.disable()
-//			.anonymous()
-//			.disable()
-//			.authorizeRequests()
-//			.antMatchers("/login")
-//			.permitAll()
-//			.anyRequest()
-//			.authenticated()
-//			.and()
-//			.formLogin()
-//			.loginPage("/login");
+//		http.httpBasic().disable();
+////		http.authorizeRequests()
+////		.antMatchers("/**")
+////		.permitAll()
+////		.anyRequest()
+////		.anonymous()
+////		.and()
+////		.csrf()
+////		.disable();
+//		
+////		http.csrf().disable();
+////		http.cors().disable();
+//		
+////		//nece kreirati nikakvu sesiju 
+////		http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+////		
+////		//ono cemu neregistrovani korisnik sme da pristupi
+////		http.authorizeRequests().antMatchers("/*", "/login", "/register", "/user").permitAll();//.anyRequest().authenticated();
+////		
+////		http.exceptionHandling().accessDeniedPage("/adminpanel"); //npr da panel admina trci na ovom linku zabranicemo ako nema dovoljno ovlascenja
+////		
+////		http.apply(new JwtTokenFilterConfigurer(jwtTokenProvider));
+//		
 //	}
-//
+//	
+////	@Override
+////	public void configure(WebSecurity web) {
+////		//sve sto ce se ignorisati za web
+////		web.ignoring().antMatchers("/webjars/**")//
+////				.antMatchers("/public")//
+////				.antMatchers("/main**")//
+////				.antMatchers("/inline**")//
+////				.antMatchers("/polyfills**")//
+////				.antMatchers("/styles**")//
+////				.antMatchers("/favicon.ico")//
+////				.antMatchers("/scripts**")//
+////				.antMatchers("/glyphicons**")//
+////				.antMatchers("/fontawesome**")//
+////				.antMatchers("/vendor**")//
+////				.antMatchers("/assets/**")//
+////				.antMatchers("/Poppins**")//
+////				.antMatchers("/h2-console");
+////	}
+//	
+//	
 //	@Bean
-//	public BCryptPasswordEncoder encoder() {
+//	public PasswordEncoder passwordEncoder() {
 //		return new BCryptPasswordEncoder();
 //	}
-
+	
+	
 }

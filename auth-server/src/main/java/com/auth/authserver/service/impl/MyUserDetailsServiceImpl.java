@@ -7,7 +7,6 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import com.auth.authserver.config.MyUserDetails;
 import com.auth.authserver.dto.UserDTO;
 
 @Service

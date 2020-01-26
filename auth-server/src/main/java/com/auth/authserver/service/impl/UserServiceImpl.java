@@ -20,6 +20,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	public List<UserDTO> getAllUsers() {
+		System.out.println("getAllUsers()");
 		List<UserDTO> users = new ArrayList<>();
 		
 		for(User user : userRepository.findAll()) {
