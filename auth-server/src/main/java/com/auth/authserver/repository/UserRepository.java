@@ -6,7 +6,9 @@ import com.auth.authserver.model.User;
 
 public interface UserRepository extends JpaRepository<User, Long>{
 
-	boolean existsByEmail(String email);
+	public boolean existsByEmail(String email);
+
+	public User findByEmail(String email);
 
 	
 	
