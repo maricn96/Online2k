@@ -33,7 +33,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		//dozvoljeno bilo sta, bez sekjuritija
 		http.authorizeRequests()
-			.antMatchers("/**", "/login", "/register", "/user")
+			.antMatchers("/register", "/user")
 			.permitAll()
 			.anyRequest()
 			.anonymous()
