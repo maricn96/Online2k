@@ -1,6 +1,5 @@
 package com.auth.authserver.config;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -11,12 +10,11 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Configuration
-//@EnableWebSecurity
-//@EnableGlobalMethodSecurity(prePostEnabled = true)
+@EnableWebSecurity
+@EnableGlobalMethodSecurity(prePostEnabled = true)
 @Order(1)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	
@@ -25,8 +23,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	 * Dakle ova klasa autentifikuje zahteve ka serveru. 
 	 */
 	
-	@Value("${user.oauth.user.username}")
-	private String username;
+	@Value("${user.oauth.user.email}")
+	private String email;
 	
 	@Value("${user.oauth.user.password}")
 	private String password;
@@ -35,7 +33,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		//dozvoljeno bilo sta, bez sekjuritija
 		http.authorizeRequests()
-			.antMatchers("/**")
+			.antMatchers("/**", "/login", "/register", "/user")
 			.permitAll()
 			.anyRequest()
 			.anonymous()
@@ -57,14 +55,18 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		auth.inMemoryAuthentication()
-			.withUser(username)
-			.password(passwordEncoder().encode(password))
-			.roles("USER");
+			.withUser(email).password("{noop}" + password).roles("USER"); //ovo noop resava problem za sifrovanje id-ja
 	}
 	
 	@Bean
 	public BCryptPasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
+	}
+	
+	@Bean
+	@Override
+	public AuthenticationManager authenticationManagerBean() throws Exception {
+		return super.authenticationManagerBean();
 	}
 	
 	
