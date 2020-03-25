@@ -1,5 +1,9 @@
 package com.online.calc.service.impl;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
@@ -120,8 +124,20 @@ public class CalculationServiceImpl implements CalculationService{
 	 */
 	@Override
 	public Boolean createCurrentCalculation(MealDTO mealDto) {
-		Date date = new Date();
-		mealRepository.save(new Meal(date, new ObjectId(mealDto.getUser()), mealDto.getAmount(), mealDto.getFood(), false));
+		//za sad ovako parsiranje datuma, izdvoj u neku util klasu view-model 
+//		DateTimeFormatter formatter = DateTimeFormatter.BASIC_ISO_DATE;
+//
+//		String formattedDate = formatter.format(LocalDate.now());
+//		Date date1 = null;
+//		try {
+////			date1 = new SimpleDateFormat("yyyy-MM-dd").parse(formattedDate);
+//		} catch (ParseException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}  
+//		System.out.println(formattedDate);
+//		Date date = new Date();
+		mealRepository.save(new Meal(null, new ObjectId(mealDto.getUser()), mealDto.getAmount(), mealDto.getFood(), false));
 		return true;
 	}
 	

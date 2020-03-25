@@ -30,7 +30,7 @@ public class Meal {
 	private Boolean saved; //ako je sacuvan nece se load
 	
 	public Meal(Date dateOfMeal, ObjectId user, Double amount, String food, Boolean saved) {
-		Assert.notNull(dateOfMeal, "Date of meal must not be empty!");
+//		Assert.notNull(dateOfMeal, "Date of meal must not be empty!");
 		Assert.notNull(user, "User must not be empty!");
 		Assert.notNull(amount, "Amount must not be empty!");
 		Assert.notNull(food, "Food must not be empty!");

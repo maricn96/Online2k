@@ -7,6 +7,7 @@ import javax.validation.constraints.NotBlank;
 
 import org.bson.types.ObjectId;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.online.calc.model.Food;
 import com.online.calc.model.Meal;
 
@@ -28,6 +29,7 @@ public class MealDTO {
 	private String id;
 	
 	@NotBlank
+	@JsonFormat(pattern="dd.MM.yyyy")
 	private Date dateOfMeal;
 	
 	@NotBlank
@@ -50,7 +52,7 @@ public class MealDTO {
 	public MealDTO(Meal meal) {
 		this.id = meal.getId().toString();
 		this.dateOfMeal = meal.getDateOfMeal();
-		this.user = meal.getUser().toString();
+//		this.user = meal.getUser().toString();
 		this.amount = meal.getAmount();
 		this.food = meal.getFood();
 		this.saved = meal.getSaved();
