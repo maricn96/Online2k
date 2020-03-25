@@ -1,9 +1,19 @@
-<mat-toolbar color="primary">
+<mat-toolbar color="primary" *ngIf="!ulogovan()">
     <mat-toolbar-row>
       <span routerLink="/calculator" class="hand">Calculator&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-      <span routerLink="/addnew" class="right-side hand">Insert new</span>
+      <!-- <span routerLink="/addnew" class="right-side hand">Insert new</span> -->
       <span class="example-spacer"></span>
     <span routerLink="/login" class="right-side hand">Login&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
     <span routerLink="/register" class="right-side hand">Sign up</span>
     </mat-toolbar-row>
+</mat-toolbar>
+
+<mat-toolbar color="primary" *ngIf="ulogovan()">
+  <mat-toolbar-row>
+    <span routerLink="/calculator" class="hand">Calculator&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+    <span routerLink="/addnew" class="right-side hand">Insert new</span>
+    <span class="example-spacer"></span>
+  <!-- <span routerLink="/login" class="right-side hand">Login&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> -->
+  <span routerLink="/" class="right-side hand" (click)="logout()">Logout</span>
+  </mat-toolbar-row>
 </mat-toolbar>

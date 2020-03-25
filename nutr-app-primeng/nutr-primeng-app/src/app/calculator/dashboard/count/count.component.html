@@ -1,0 +1,90 @@
+<br /><br />
+<form [formGroup]="mealForm">
+  <div>
+    <div class="ui-g">
+      <div class="ui-g-1" style="align-content: center">
+        <label for="amount-input">Select food</label>
+      </div>
+      <div class="ui-g-1">
+        <p-dropdown formControlName="name" [options]="allFoodDrop" filter="true" #foodDrop
+          (onChange)="changeFoodDrop(foodDrop)">
+        </p-dropdown>
+      </div>
+    </div>
+
+    <div class="ui-g">
+      <div class="ui-g-1">
+        <label for="amount-input">Insert amount [g]</label>
+      </div>
+      <div class="ui-g-1">
+        <input (blur)="calculateNutrients()" formControlName="amountIns" id="amount-input" pInputText type="number" />
+      </div>
+    </div>
+
+    <div class="ui-g">
+      <div class="ui-g-1">
+        <label>Calories: </label>
+      </div>
+      <div class="ui-g-1">
+        <input formControlName="currCalories" pInputText type="text" readonly />
+      </div>
+      <div class="ui-g-1">
+        <input class="sum" formControlName="calories" pInputText type="text" readonly />
+      </div>
+    </div>
+
+    <div class="ui-g">
+      <div class="ui-g-1">
+        <label>Proteins: </label>
+      </div>
+      <div class="ui-g-1">
+        <input formControlName="currProteins" pInputText type="text" readonly />
+      </div>
+      <div class="ui-g-1">
+        <input class="sum" formControlName="proteins" pInputText type="text" readonly />
+      </div>
+    </div>
+
+    <div class="ui-g">
+      <div class="ui-g-1">
+        <label>Carbs: </label>
+      </div>
+      <div class="ui-g-1">
+        <input formControlName="currCarbs" pInputText type="text" readonly />
+      </div>
+      <div class="ui-g-1">
+        <input class="sum" formControlName="carbs" pInputText type="text" readonly />
+      </div>
+    </div>
+
+    <div class="ui-g">
+      <div class="ui-g-1">
+        <label>Fat: </label>
+      </div>
+      <div class="ui-g-1">
+        <input formControlName="currFat" pInputText type="text" readonly />
+      </div>
+      <div class="ui-g-1">
+        <input class="sum" formControlName="fat" pInputText type="text" readonly />
+      </div>
+    </div>
+  </div>
+
+
+  <div class="ui-g">
+    <div class="ui-g-1">
+    </div>
+    <div class="ui-g-1">
+      <button pButton type="button" label="Submit" class="ui-button-warning"
+      (click)="saveMeal()"></button>
+    </div>
+    <div class="ui-g-1">
+      <button style="margin-left: -70px;" pButton type="button" label="Delete" class="ui-button-secondary"
+      (click)="resetForm()"></button>
+    </div>
+  </div>
+
+
+
+
+</form>

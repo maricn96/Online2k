@@ -1,0 +1,64 @@
+<br /><br />
+<form [formGroup]="foodForm">
+  <div>
+
+    <div class="ui-g">
+      <div class="ui-g-1">
+        <label>Name: </label>
+      </div>
+      <div class="ui-g-1">
+        <input formControlName="name" pInputText type="text" />
+      </div>
+    </div>
+
+    <div class="ui-g">
+      <div class="ui-g-1">
+        <label>Calories: </label>
+      </div>
+      <div class="ui-g-1">
+        <input formControlName="calories" pInputText type="text" />
+      </div>
+    </div>
+
+    <div class="ui-g">
+      <div class="ui-g-1">
+        <label>Proteins: </label>
+      </div>
+      <div class="ui-g-1">
+        <input formControlName="proteins" pInputText type="text" />
+      </div>
+    </div>
+
+    <div class="ui-g">
+      <div class="ui-g-1">
+        <label>Carbs: </label>
+      </div>
+      <div class="ui-g-1">
+        <input formControlName="carbs" pInputText type="text" />
+      </div>
+    </div>
+
+    <div class="ui-g">
+      <div class="ui-g-1">
+        <label>Fat: </label>
+      </div>
+      <div class="ui-g-1">
+        <input formControlName="fat" pInputText type="text" />
+      </div>
+    </div>
+  </div>
+
+
+  <div class="ui-g">
+    <div class="ui-g-1">
+    </div>
+    <div class="ui-g-1">
+      <button pButton type="button" label="Save" class="ui-button-warning"
+      (click)="saveMeal()"></button>
+    </div>
+    <div class="ui-g-1">
+      <button style="margin-left: -70px;" pButton type="button" label="Delete" class="ui-button-secondary"
+      (click)="resetForm()"></button>
+    </div>
+  </div>
+</form>

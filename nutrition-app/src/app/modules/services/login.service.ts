@@ -8,6 +8,8 @@ import { HttpClient } from '@angular/common/http';
 })
 export class LoginService {
 
+  private loggedInStatus = false;
+
   private extractData(res: Response)
   {
     let body = res;
@@ -22,6 +24,21 @@ export class LoginService {
     return this.http.post(this.router + '/login', {
       email, password
     }).pipe(map(this.extractData));
+  }
+
+  // private setSession(authRes)
+  // {
+  //   localStorage.setItem('token', authRes.setToken);
+  // }
+
+  setLoggedIn(value: boolean)
+  {
+    this.loggedInStatus = value;
+  } 
+
+  get isLoggedIn()
+  {
+    return this.loggedInStatus;
   }
 
 }

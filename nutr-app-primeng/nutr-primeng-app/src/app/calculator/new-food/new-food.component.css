@@ -1,0 +1,18 @@
+.ui-inputtext {
+    background: whitesmoke;
+    color: black;
+}
+
+.ui-autocomplete .ui-autocomplete-input {
+    background: whitesmoke;
+    color: black;
+}
+
+::ng-deep .ui-dropdown {
+    background: white !important;
+    color: black !important;
+}
+
+.sum {
+    margin-left: 30px;
+}
